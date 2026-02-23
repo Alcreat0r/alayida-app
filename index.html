@@ -2,12 +2,74 @@
 <html>
 <head>
     <title>Alayida AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            margin: 100px auto;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        input {
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            background: #00c6ff;
+            color: white;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0072ff;
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
-<body style="text-align:center; font-family:sans-serif;">
-    <h1>Alayida AI</h1>
-    <p>AI powered image generator</p>
-    <button onclick="alert('Tez kunda ishga tushadi!')">
-        Generate Image
-    </button>
+
+<body>
+
+    <div class="card">
+        <h1>Alayida AI</h1>
+        <p>AI powered image generator</p>
+
+        <input type="text" placeholder="Rasm uchun prompt yozing..." />
+
+        <button onclick="alert('Tez kunda ishga tushadi 🚀')">
+            Generate Image
+        </button>
+
+        <p class="note">
+            1 marta bepul. Keyingi foydalanish pullik.
+        </p>
+    </div>
+
 </body>
 </html>

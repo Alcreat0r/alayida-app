@@ -60,16 +60,80 @@
         <h1>Alayida AI</h1>
         <p>AI powered image generator</p>
 
-        <input type="text" placeholder="Rasm uchun prompt yozing..." />
+        <<input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)" />
 
-        <button onclick="alert('Tez kunda ishga tushadi 🚀')">
-            Generate Image
-        </button>
+<img id="preview" style="display:none; margin-top:15px; max-width:100%; border-radius:<button onclick="generateImage()">
+    Generate Image
+</button>
 
         <p class="note">
             1 marta bepul. Keyingi foydalanish pullik.
         </p>
     </div>
+<script>
+let used = localStorage.getItem("used");
 
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function(){
+        const img = document.getElementById("preview");
+        img.src = reader.result;
+        img.style.display = "block";
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+function generateImage() {
+    const prompt = document.querySelector("input[type='text']").value;
+
+    if (!prompt) {
+        alert("Iltimos prompt yozing ✍️");
+        return;
+    }
+
+    if (!used) {
+        alert("AI rasmni o‘zgartirmoqda... ⏳");
+        localStorage.setItem("used", "true");
+
+        setTimeout(() => {
+            alert("Demo natija tayyor 🚀");
+        }, 2000);
+
+    } else {
+        alert("Bepul limit tugadi. To‘lov qiling 💳");
+<script>
+let used = localStorage.getItem("used");
+
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function(){
+        const img = document.getElementById("preview");
+        img.src = reader.result;
+        img.style.display = "block";
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+function generateImage() {
+    const prompt = document.querySelector("input[type='text']").value;
+
+    if (!prompt) {
+        alert("Iltimos prompt yozing ✍️");
+        return;
+    }
+
+    if (!used) {
+        alert("AI rasmni o‘zgartirmoqda... ⏳");
+        localStorage.setItem("used", "true");
+
+        setTimeout(() => {
+            alert("Demo natija tayyor 🚀");
+        }, 2000);
+
+    } else {
+        alert("Bepul limit tugadi. To‘lov qiling 💳");
+    }
+}
+</script>
 </body>
 </html>

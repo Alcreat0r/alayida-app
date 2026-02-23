@@ -1,162 +1,191 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alayida AI</title>
+<title>ALAYIDA</title>
 
 <style>
 :root{
-  --bg1:#0f2027;
-  --bg2:#203a43;
-  --bg3:#2c5364;
-  --card:rgba(255,255,255,0.08);
-  --text:white;
+  --bg:#f2f2f5;
+  --card:#ffffff;
+  --accent:#e91e63;
+  --text:#222;
+}
+
+/* DARK MODE */
+.dark{
+  --bg:#1c1c1e;
+  --card:#2c2c2e;
+  --accent:#ff2d55;
+  --text:#ffffff;
 }
 
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  background:var(--bg);
   color:var(--text);
-  transition:0.3s;
+  transition:0.4s;
 }
 
-/* LIGHT MODE */
-.light{
-  --bg1:#f5f7fa;
-  --bg2:#e4e8f0;
-  --bg3:#d6dbe6;
-  --card:white;
-  --text:black;
-}
-
-/* NAVBAR */
-.navbar{
+/* HEADER */
+.header{
   display:flex;
   justify-content:space-between;
-  padding:15px 25px;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,0.2);
+  align-items:center;
+  padding:20px 25px;
 }
 
-.navbar button{
-  background:none;
-  border:none;
-  color:white;
+.logo{
+  font-weight:600;
+  font-size:20px;
+  letter-spacing:2px;
+}
+
+.menu-btn{
+  font-size:26px;
   cursor:pointer;
-  font-size:14px;
 }
 
-.container{
-  max-width:500px;
-  margin:40px auto;
-  padding:30px;
-  background:var(--card);
-  border-radius:25px;
-  backdrop-filter:blur(15px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+/* MAIN */
+.main{
   text-align:center;
+  margin-top:80px;
 }
 
-input, select, textarea{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  margin-top:10px;
+.main h1{
+  font-weight:500;
+}
+
+input{
+  width:80%;
+  max-width:400px;
+  padding:14px;
+  margin-top:20px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  background:var(--card);
+  color:var(--text);
 }
 
 button.action{
   margin-top:15px;
-  padding:12px;
-  width:100%;
+  padding:12px 30px;
   border:none;
-  border-radius:10px;
-  background:gold;
-  font-weight:bold;
+  border-radius:12px;
+  background:var(--accent);
+  color:white;
   cursor:pointer;
   transition:0.3s;
 }
 
 button.action:hover{
-  transform:scale(1.05);
+  opacity:0.8;
 }
 
-.pricing-card{
-  margin-top:15px;
-  padding:15px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.1);
+/* SIDEBAR */
+.sidebar{
+  position:fixed;
+  top:0;
+  right:-320px;
+  width:280px;
+  height:100%;
+  background:var(--card);
+  padding:25px;
+  transition:0.4s;
+  box-shadow:-5px 0 25px rgba(0,0,0,0.1);
+  overflow-y:auto;
+}
+
+.sidebar.active{
+  right:0;
+}
+
+.sidebar h3{
+  margin-top:25px;
+  font-weight:500;
+}
+
+.sidebar select,
+.sidebar textarea,
+.sidebar button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.sidebar button{
+  background:var(--accent);
+  color:white;
+  border:none;
   cursor:pointer;
-  transition:0.3s;
-}
-
-.pricing-card:hover{
-  background:gold;
-  color:black;
 }
 
 .footer{
   text-align:center;
-  margin:40px 0 20px;
-  opacity:0.6;
+  margin:100px 0 20px;
+  font-size:13px;
+  opacity:0.5;
 }
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-  <div><b>Alayida AI</b></div>
-  <div>
-    <button onclick="toggleMode()">🌙/☀️</button>
-    <button onclick="changeLang()">Til</button>
-  </div>
+<div class="header">
+  <div class="logo">ALAYIDA</div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
-<div class="container">
-  <h2>Luxury AI Xizmat</h2>
+<div class="main">
+  <h1>Интеллект нового поколения</h1>
+  <input type="text" placeholder="Введите запрос...">
+  <br>
+  <button class="action">Запустить AI</button>
+</div>
 
-  <input type="text" placeholder="Prompt yozing...">
+<div class="sidebar" id="sidebar">
 
-  <button class="action">AI Ishga tushirish</button>
+  <h3>🌙 Режим</h3>
+  <button onclick="toggleMode()">Переключить тему</button>
 
-  <h3>💎 Premium Tariflar</h3>
+  <h3>🌍 Язык</h3>
+  <select>
+    <option>Русский</option>
+    <option>O‘zbekcha</option>
+    <option>English</option>
+  </select>
 
-  <div class="pricing-card" onclick="selectPlan('1 oy - 99 000 so‘m')">
-    1 Oy — 99 000 so‘m
-  </div>
+  <h3>💎 Премиум</h3>
+  <select>
+    <option>1 месяц — 99 000 сум</option>
+    <option>2 месяца — 129 000 сум</option>
+    <option>1 год — 299 000 сум</option>
+  </select>
+  <button>Оформить</button>
 
-  <div class="pricing-card" onclick="selectPlan('2 oy - 129 000 so‘m')">
-    2 Oy — 129 000 so‘m
-  </div>
-
-  <div class="pricing-card" onclick="selectPlan('1 yil - 299 000 so‘m')">
-    1 Yil — 299 000 so‘m
-  </div>
-
-  <h3>📝 Izoh qoldirish</h3>
-  <textarea rows="4" placeholder="Fikringizni yozing..."></textarea>
-  <button class="action">Izoh yuborish</button>
+  <h3>📝 Отзыв</h3>
+  <textarea rows="4" placeholder="Оставьте отзыв..."></textarea>
+  <button>Отправить</button>
 
 </div>
 
 <div class="footer">
-  © 2025 Alayida AI — Luxury Digital Service
+  © 2025 ALAYIDA — Premium AI Platform
 </div>
 
 <script>
+function toggleMenu(){
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
 function toggleMode(){
-  document.body.classList.toggle("light");
-}
-
-function changeLang(){
-  alert("Til o‘zgartirish funksiyasi keyingi versiyada backend bilan ishlaydi.");
-}
-
-function selectPlan(plan){
-  alert("Siz tanladingiz: " + plan);
+  document.body.classList.toggle("dark");
 }
 </script>
 
